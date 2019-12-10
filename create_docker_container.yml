@@ -1,0 +1,13 @@
+---
+  - hosts: local
+    become: true
+    tasks:
+     - name: stop previous version docker
+       shell: docker stop maven_demo
+     - name: remove stopped container
+       shell: docker rm -f maven_demo	  
+     - name: remove docker images
+       shell: docker image rm -f ashwaqar/test_maven:latest
+       
+     - name: create docker image
+       shell: docker run -d --name maven_demo -p 8090:8080 ashwaqar/test_maven:latest
