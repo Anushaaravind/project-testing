@@ -2,6 +2,5 @@
   - hosts: local
     become: true
     tasks:
-     
      - name: create docker image
        shell: docker run -d --name maven_demo -p 8090:8080 anushaaravind/test-project:latest
